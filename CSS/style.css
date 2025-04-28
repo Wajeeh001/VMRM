@@ -1,138 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Cascadia Mono", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cascadia Mono", sans-serif;
+  scroll-behavior: smooth;
 }
 
-body{
-    padding: 0px 100px;
+body {
+  padding: 0px 100px;
 }
-a{
-    color: black;
-    text-decoration: none;
-}
-
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0px;
+a {
+  color: black;
+  text-decoration: none;
 }
 
-.logo>a>img{
-    width: 70px;
-    height: 70px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0px;
 }
 
-nav>ul{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    gap: 30px;
-    
+.logo > a > img {
+  width: 70px;
+  height: 70px;
 }
 
-nav>ul>a>li{
-    color: #284180;
-    font-weight: 600;
-    transition: all 0.1s ease-in-out;
+nav > ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  gap: 30px;
 }
 
-nav>ul>a>li:hover{
-    color: rgb(48, 48, 48);
-    font-size: 1.2rem;
+nav > ul > a > li {
+  color: #284180;
+  font-weight: 600;
+  transition: all 0.1s ease-in-out;
 }
 
-.hero{
-    background-color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 100px 50px;
-    border-radius: 30px;
-    border: 6px solid #7596e1;
+nav > ul > a > li:hover {
+  color: rgb(48, 48, 48);
+  scale: 1.2;
 }
 
-.hero>h1{
-    font-size: 2rem;
-    font-weight: 700;
-    color: #cfcece;
-    text-align: center;
-    margin: 30px 0px;
+.hero {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px 50px;
+  border-radius: 30px;
+  border: 6px solid #7596e1;
 }
 
-.hero>h1>span{
-    background: linear-gradient(120deg, #284180, #d5dceb);
-    background-clip: text;
-    color:transparent;
+.hero > h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #cfcece;
+  text-align: center;
+  margin: 30px 0px;
 }
 
-.hero>p{
-    font-size: 1rem;
-    color: #7b7b7b;
-    text-align: center;
-    margin-bottom: 30px;
+.hero > h1 > span {
+  background: linear-gradient(120deg, #284180, #d5dceb);
+  background-clip: text;
+  color: transparent;
 }
 
-.inventory{
-    margin: 50px 0px;
+.hero > p {
+  font-size: 1rem;
+  color: #7b7b7b;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.inventory>h2{
-    font-size: 2rem;
-    font-weight: 700;
-    color: #000000;
-    text-align: center;
-    margin: 30px 0px;
+.inventory {
+  margin: 50px 0px;
 }
 
-.inventory>p{
-    font-size: 1rem;
-    color: #4a4a4a;
-    text-align: center;
-    margin-bottom: 30px;
+.inventory > h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin: 30px 0px;
 }
 
-.inventory>.container {
-    margin-top: 20px;
-  }
-  
-  #addRowBtn {
-    margin-bottom: 10px;
-    padding: 8px 16px;
-    font-size: 16px;
-    cursor: pointer;
-    background: linear-gradient(90deg, #82a2f5, #1b45af);
-    color: white;
-    border: none;
-    border-radius: 6px;
-  }
-  
-  #inventoryTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #inventoryTable th,
-  #inventoryTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  #inventoryTable th {
-    background-color: #f4f4f4;
-  }
-  
-  input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
+.inventory > p {
+  font-size: 1rem;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0px 70px;
+  padding-bottom: 20px;
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.section > h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin: 30px 0px;
+}
+
+.section > p {
+  font-size: 1rem;
+  color: #4a4a4a;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 0px 70px;
+  padding-bottom: 20px;
+}
+
+.space {
+  margin-bottom: 150px;
+}
+#addRowBtn {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #82a2f5, #1b45af);
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+th {
+  font-size: 12px;
+}
+
+#inventoryTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#inventoryTable th,
+#inventoryTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+#inventoryTable th {
+  background-color: #f4f4f4;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.custom-table th {
+  background-color: #f2f2f2;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}

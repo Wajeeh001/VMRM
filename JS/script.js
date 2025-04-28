@@ -5,11 +5,11 @@
 const addRowBtn = document.getElementById('addRowBtn');
 const tableBody = document.querySelector('#inventoryTable tbody');
 
-// Function to reassign IDs based on current rows
+// Function to reassign IDs based on current row
 function updateIDs() {
   const rows = tableBody.querySelectorAll('tr');
   rows.forEach((row, index) => {
-    row.querySelector('td').textContent = index + 1; // Set first td (ID) to (index + 1)
+    row.querySelector('td').textContent = index + 1;
   });
 }
 
@@ -39,4 +39,52 @@ addRowBtn.addEventListener('click', () => {
     updateIDs();
   });
 });
+
+function addRow(tableId) {
+    const table = document.getElementById(tableId).querySelector('tbody');
+    const newRow = table.insertRow();
+  
+    const columns = {
+      inserviceTable: [
+        'Vehicle ID', 'Type Vehicle', 'Changed Parts', 'Labour Charges', 'Parts Charged Cost', 'Total Cost', 'Delivery Date', 'Delivery Status'
+      ],
+      deliveredTable: [
+        'Vehicle ID', 'Type Vehicle', 'Changed Parts', 'Total Cost (Paid/Not)', 'Delivered Status'
+      ],
+      customersTable: [
+        'Name', 'Vehicle Type', 'Vehicle ID', 'Remaining Charges', 'Address'
+      ]
+    };
+
+    newRow.insertCell().innerText = '';
+  
+    columns[tableId].forEach(col => {
+      const cell = newRow.insertCell();
+      if (col === 'Delivery Date') {
+        cell.innerHTML = `<input type="date">`;
+      } else {
+        cell.innerHTML = `<input type="text" placeholder="${col}">`;
+      }
+    });
+  
+    const actionCell = newRow.insertCell();
+    actionCell.innerHTML = `<button class="deleteBtn" onclick="deleteRow(this, '${tableId}')">❌</button>`;
+  
+    updateIds(tableId);
+  }
+  
+  function deleteRow(btn, tableId) {
+    const row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
+    updateIds(tableId);
+  }
+  
+  function updateIds(tableId) {
+    const table = document.getElementById(tableId).querySelector('tbody');
+    const rows = table.querySelectorAll('tr');
+    rows.forEach((row, index) => {
+      row.cells[0].innerText = index + 1;
+    });
+  }
+  
 

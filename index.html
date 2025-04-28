@@ -15,20 +15,20 @@
         </div>
         <nav class="nav">
             <ul class="nav-links">
-                <a href="#">
-                    <li>link1</li>
+                <a href="#inventory">
+                    <li>Inventory</li>
+                </a>
+                <a href="#inservice">
+                    <li>lnservice</li>
+                </a>
+                <a href="#delivered">
+                    <li>Delivered</li>
+                </a>
+                <a href="#customers">
+                    <li>customers</li>
                 </a>
                 <a href="#">
-                    <li>link2</li>
-                </a>
-                <a href="#">
-                    <li>link3</li>
-                </a>
-                <a href="#">
-                    <li>link4</li>
-                </a>
-                <a href="#">
-                    <li>link5</li>
+                    <li>Documentation</li>
                 </a>
             </ul>
         </nav>
@@ -39,7 +39,7 @@
         <p>Here, you can easily manage your vehicle inventory, keep detailed records of your customers, and track all your business activities in one place. Stay organized by scheduling maintenance, recording repairs, managing expenses, and monitoring your entire operation efficiently.</p>
     </section>
 
-    <section class="inventory">
+    <section class="inventory space" id="inventory">
         <h2>Inventory Management</h2>
         <p>Manage your vehicle inventory with ease. Add, update, and track your spare parts in real-time.</p>
       
@@ -62,6 +62,75 @@
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section class="inservice space" id="inservice">
+        <div class="section">
+            <h2>Inservice Vehicle</h2>
+            <p>Inservice Vehicle offers top-notch maintenance and repair management to keep your vehicles in peak condition</p>
+            <button id="addRowBtn" onclick="addRow('inserviceTable')">➕ Add Row</button>
+            <table id="inserviceTable" class="custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Vehicle ID</th>
+                  <th>Type Vehicle</th>
+                  <th>Changed Parts</th>
+                  <th>Labour Charges</th>
+                  <th>Parts Charged Cost</th>
+                  <th>Total Cost</th>
+                  <th>Delivery Date</th>
+                  <th>Delivery Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+      </section>
+
+      <section class="delivered space" id="delivered">
+        <div class="section">
+            <h2>Delivered Vehicle / Repaired</h2>
+            <p>Delivered Vehicle / Repaired ensures your vehicle is fully repaired and delivered back to you in optimal condition.</p>
+            <button id="addRowBtn" onclick="addRow('deliveredTable')">➕ Add Row</button>
+            <table id="deliveredTable" class="custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Vehicle ID</th>
+                  <th>Type Vehicle</th>
+                  <th>Changed Parts</th>
+                  <th>Total Cost (Paid/Not)</th>
+                  <th>Delivered Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+      </section>
+
+      <section class="customers space" id="customers">
+        <div class="section">
+            <h2>Customers</h2>
+            <p>Our customers receive reliable and efficient vehicle maintenance and repair services tailored to their needs.</p>
+            <button id="addRowBtn" onclick="addRow('customersTable')">➕ Add Row</button>
+            <table id="customersTable" class="custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Vehicle Type</th>
+                  <th>Vehicle ID</th>
+                  <th>Remaining Charges</th>
+                  <th>Address</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
       </section>
       
 
