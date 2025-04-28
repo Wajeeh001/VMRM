@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Mono:ital,wght@0,200..700;1,200..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cascadia Mono", sans-serif;
+}
+
+body{
+    padding: 0px 100px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.logo>a>img{
+    width: 70px;
+    height: 70px;
+}
+
+nav>ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    
+}
+
+nav>ul>a>li{
+    color: #284180;
+    font-weight: 600;
+    transition: all 0.1s ease-in-out;
+}
+
+nav>ul>a>li:hover{
+    color: rgb(48, 48, 48);
+    font-size: 1.2rem;
+}
+
+.hero{
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px 50px;
+    border-radius: 30px;
+    border: 6px solid #7596e1;
+}
+
+.hero>h1{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #cfcece;
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.hero>h1>span{
+    background: linear-gradient(120deg, #284180, #d5dceb);
+    background-clip: text;
+    color:transparent;
+}
+
+.hero>p{
+    font-size: 1rem;
+    color: #7b7b7b;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.inventory{
+    margin: 50px 0px;
+}
+
+.inventory>h2{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.inventory>p{
+    font-size: 1rem;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.inventory>.container {
+    margin-top: 20px;
+  }
+  
+  #addRowBtn {
+    margin-bottom: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #82a2f5, #1b45af);
+    color: white;
+    border: none;
+    border-radius: 6px;
+  }
+  
+  #inventoryTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #inventoryTable th,
+  #inventoryTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  #inventoryTable th {
+    background-color: #f4f4f4;
+  }
+  
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
