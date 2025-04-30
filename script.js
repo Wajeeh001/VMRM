@@ -25,9 +25,9 @@ addRowBtn.addEventListener('click', () => {
     <td><input type="text" placeholder="Order Number"></</td>
     <td>
       <select>
-        <option value="In Stock">In Stock</option>
-        <option value="Ordered">Ordered</option>
+        <option value="Available">Available</option>
         <option value="Out of Stock">Out of Stock</option>
+        <option value="Ordered">Ordered</option>
       </select>
     </td>
     <td><button class="deleteBtn">❌</button></td>
