@@ -1,107 +1,62 @@
-"use strict";
-
-// Inventory
-const addRowBtn = document.getElementById('addRowBtn');
-const tableBody = document.querySelector('#inventoryTable tbody');
-
-// Function to reassign IDs based on current row
-function updateIDs() {
-  const rows = tableBody.querySelectorAll('tr');
-  rows.forEach((row, index) => {
-    row.querySelector('td').textContent = index + 1;
-  });
-}
-
-// Add Row to Inventory Table with Dropdowns for Paid/Not Paid and Delivery Status
-addRowBtn.addEventListener('click', () => {
-  const row = document.createElement('tr');
-
-  row.innerHTML = `
-    <td></td> <!-- ID will be set dynamically -->
-    <td><input type="text" placeholder="Vehicle ID"></td>
-    <td><input type="text" placeholder="Vehicle Type"></td>
-    <td><input type="text" placeholder="Changed Parts"></td>
-    <td><input type="text" placeholder="Total Cost"></td>
-    <td><input type="text" placeholder="Order Number"></</td>
-    <td>
-      <select>
-        <option value="Available">Available</option>
-        <option value="Out of Stock">Out of Stock</option>
-        <option value="Ordered">Ordered</option>
-      </select>
-    </td>
-    <td><button class="deleteBtn">❌</button></td>
-  `;
-  tableBody.appendChild(row);
-  updateIDs();
-
-  // Add event listener to delete button for this row
-  row.querySelector('.deleteBtn').addEventListener('click', () => {
-    row.remove();
-    updateIDs();
-  });
-});
-
-// Add row to other tables dynamically (like inserviceTable, deliveredTable, etc.)
 function addRow(tableId) {
-  const table = document.getElementById(tableId).querySelector('tbody');
-  const newRow = table.insertRow();
+  const table = document.getElementById(tableId);
+  const tbody = table.querySelector('tbody');
+  const newRow = tbody.insertRow();
+  const headerCells = table.querySelector('thead tr').cells;
+  const rowIndex = tbody.rows.length;
 
-  const columns = {
-    inserviceTable: [
-      'Vehicle ID', 'Type Vehicle', 'Changed Parts', 'Labour Charges', 'Parts Charged Cost', 'Total Cost', 'Delivery Date',
-    ],
-    deliveredTable: [
-      'Vehicle ID', 'Type Vehicle', 'Changed Parts', 'Total Cost', '(Paid/Not)', 'Delivery Status'
-    ],
-    customersTable: [
-      'Name', 'Vehicle Type', 'Vehicle ID', 'Remaining Charges', 'Address'
-    ]
-  };
+  for (let i = 0; i < headerCells.length; i++) {
+      const newCell = newRow.insertCell(i);
+      const headerText = headerCells[i].innerText.trim().toLowerCase();
 
-  newRow.insertCell().innerText = '';
-
-  columns[tableId].forEach(col => {
-    const cell = newRow.insertCell();
-    if (col === 'Delivery Date') {
-      cell.innerHTML = `<input type="date">`;
-    } else if (col === '(Paid/Not)') {
-      cell.innerHTML = `
-        <select>
-          <option value="Paid">Paid</option>
-          <option value="Not Paid">Not Paid</option>
-        </select>
-      `;
-    } else if (col === 'Delivery Status') {
-      cell.innerHTML = `
-        <select>
-          <option value="Delivered">Delivered</option>
-          <option value="Not Delivered">Not Delivered</option>
-        </select>
-      `;
-    } else {
-      cell.innerHTML = `<input type="text" placeholder="${col}">`;
-    }
-  });
-
-  const actionCell = newRow.insertCell();
-  actionCell.innerHTML = `<button class="deleteBtn" onclick="deleteRow(this, '${tableId}')">❌</button>`;
-
-  updateIds(tableId);
+      if (i === 0) {
+          newCell.innerText = rowIndex;
+      } else if (headerText === 'status') {
+          newCell.innerHTML = `
+              <select>
+                  <option value="available">Available</option>
+                  <option value="out of stock">Out of Stock</option>
+                  <option value="ordered">Ordered</option>
+              </select>`;
+      } else if (headerText.includes('paid') || headerText.includes('not')) {
+          newCell.innerHTML = `
+              <select>
+                  <option value="paid">Paid</option>
+                  <option value="not paid">Not Paid</option>
+              </select>`;
+      } else if (headerText.includes('delivery status')) {
+          newCell.innerHTML = `
+              <select>
+                  <option value="pending">Pending</option>
+                  <option value="delivered">Delivered</option>
+              </select>`;
+      } else if (headerText.includes('delivery date')) {
+          newCell.innerHTML = `<input type="date">`;
+      } else if (headerText === 'action') {
+          newCell.innerHTML = `
+              <button class="save-btn" onclick="saveRow(this)">💾 Save</button>
+              <button class="delete-btn" onclick="deleteRow(this)">❌</button>`;
+      } else {
+          newCell.innerHTML = `<input type="text">`;
+      }
+  }
 }
 
-// Function to delete row
-function deleteRow(btn, tableId) {
-  const row = btn.parentNode.parentNode;
-  row.parentNode.removeChild(row);
-  updateIds(tableId);
+function deleteRow(button) {
+  const row = button.closest('tr');
+  const table = row.closest('table');
+  row.remove();
+  updateIds(table.id);
 }
 
-// Function to update IDs dynamically
 function updateIds(tableId) {
-  const table = document.getElementById(tableId).querySelector('tbody');
-  const rows = table.querySelectorAll('tr');
-  rows.forEach((row, index) => {
-    row.cells[0].innerText = index + 1;
-  });
+  const table = document.getElementById(tableId);
+  const tbody = table.querySelector('tbody');
+  for (let i = 0; i < tbody.rows.length; i++) {
+      tbody.rows[i].cells[0].innerText = i + 1;
+  }
+}
+
+function saveRow(button) {
+  alert('Row saved! (Add your own save logic here)');
 }

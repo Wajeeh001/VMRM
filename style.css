@@ -187,3 +187,35 @@ select {
   padding: 5px;
   box-sizing: border-box;
 }
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button.save-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button.save-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  min-width: 80%;
+}
+
+button.delete-btn {
+  min-width: 80%;
+  color: white;
+  margin-top: 6px;
+}
+
+button.delete-btn:hover {
+  background-color: #000000;
+  transform: scale(1.05);
+}
+
