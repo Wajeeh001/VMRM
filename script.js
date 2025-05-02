@@ -1,3 +1,121 @@
+document.addEventListener('DOMContentLoaded', () => {
+  fetchData('inventoryTable', 'inventory.php');
+  fetchData('inserviceTable', 'inservice.php');
+  fetchData('deliveredTable', 'delivered.php');
+  fetchData('customersTable', 'customers.php');
+});
+
+function fetchData(tableId, endpoint) {
+  fetch(endpoint)
+      .then(response => response.json())
+      .then(data => populateTable(tableId, data))
+      .catch(error => console.error('Error:', error));
+}
+
+function populateTable(tableId, data) {
+  const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+  table.innerHTML = '';
+  data.forEach((item, index) => {
+      const row = table.insertRow();
+      Object.values(item).forEach(text => {
+          const cell = row.insertCell();
+          cell.textContent = text;
+      });
+      const actionCell = row.insertCell();
+      actionCell.innerHTML = `
+          <button class="save-btn" onclick="saveRow(this)">💾 Save</button>
+          <button class="delete-btn" onclick="deleteRow(this)">❌</button>
+      `;
+  });
+}
+
+function addRow(tableId) {
+  const table = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+  const row = table.insertRow();
+  // Add input fields based on tableId
+  // ...
+  const actionCell = row.insertCell();
+  actionCell.innerHTML = `
+      <button class="save-btn" onclick="submitRow(this, '${tableId}')">💾 Save</button>
+      <button class="delete-btn" onclick="deleteRow(this)">❌</button>
+  `;
+}
+
+function submitRow(button, tableId) {
+  const row = button.closest('tr');
+  const inputs = row.querySelectorAll('input, select');
+  const data = {};
+  inputs.forEach(input => {
+      data[input.name] = input.value;
+  });
+
+  let endpoint = '';
+  switch (tableId) {
+      case 'inventoryTable':
+          endpoint = 'inventory.php';
+          break;
+      case 'inserviceTable':
+          endpoint = 'inservice.php';
+          break;
+      case 'deliveredTable':
+          endpoint = 'delivered.php';
+          break;
+      case 'customersTable':
+          endpoint = 'customers.php';
+          break;
+  }
+
+  fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data)
+  })
+  .then(response => response.json())
+  .then(() => fetchData(tableId, endpoint))
+  .catch(error => console.error('Error:', error));
+}
+
+function deleteRow(button) {
+  const row = button.closest('tr');
+  const table = row.closest('table');
+  const id = row.cells[0].innerText;
+
+  let endpoint = '';
+  switch (table.id) {
+    case 'inventoryTable':
+      endpoint = 'inventory.php';
+      break;
+    case 'inserviceTable':
+      endpoint = 'inservice.php';
+      break;
+    case 'deliveredTable':
+      endpoint = 'delivered.php';
+      break;
+    case 'customersTable':
+      endpoint = 'customers.php';
+      break;
+  }
+
+  fetch(endpoint, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `id=${id}`
+  })
+  .then(response => response.json())
+  .then(() => {
+    row.remove(); // Remove from UI
+    updateIds(table.id); // Reorder IDs
+  })
+  .catch(error => console.error('Error deleting row:', error));
+}
+
+
+function deleteRow(button) {
+  const row = button.closest('tr');
+  row.remove();
+}
+
+
 function addRow(tableId) {
   const table = document.getElementById(tableId);
   const tbody = table.querySelector('tbody');

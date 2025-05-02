@@ -45,16 +45,17 @@ CREATE TABLE VehicleStatus (
     VehicleId VARCHAR(10) UNIQUE,
     VehicleType VARCHAR(25) NOT NULL,
     ChangedParts VARCHAR(50),
+    TotalCost varchar (50),
     PaidStatus ENUM('Paid', 'Not Paid') NOT NULL,
     DeliveryStatus ENUM('Delivered', 'Not Delivered') NOT NULL
 );
 
-INSERT INTO VehicleStatus (ID, VehicleId, VehicleType, ChangedParts, PaidStatus, DeliveryStatus)
+INSERT INTO VehicleStatus (ID, VehicleId, VehicleType, ChangedParts, TotalCost, PaidStatus, DeliveryStatus)
 VALUES 
-(1, 'V001', 'Car', 'Brake Pad', 'Paid', 'Delivered'),
-(2, 'V002', 'Truck', 'Battery', 'Not Paid', 'Not Delivered'),
-(3, 'V003', 'Motorcycle', 'Headlight', 'Paid', 'Delivered'),
-(4, 'V004', 'Bus', 'Tires', 'Not Paid', 'Not Delivered');
+(1, 'V001', 'Car', 'Brake Pad','100', 'Paid', 'Delivered'),
+(2, 'V002', 'Truck', 'Battery', '200', 'Not Paid', 'Not Delivered'),
+(3, 'V003', 'Motorcycle', 'Headlight','300', 'Paid', 'Delivered'),
+(4, 'V004', 'Bus', 'Tires','400', 'Not Paid', 'Not Delivered');
 
 Select * from  VehicleStatus;
 
