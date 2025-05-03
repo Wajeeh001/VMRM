@@ -8,8 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
+        echo json_encode(["message" => "Deleted"]);
+        exit;
     } else {
-        // Insert
+        // Insert new item
         $partName = $_POST['PartName'];
         $vehicleType = $_POST['VehicleType'];
         $price = $_POST['Price'];
@@ -21,10 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ssiiss", $partName, $vehicleType, $price, $quantity, $orderedNumber, $status);
         $stmt->execute();
         $stmt->close();
+
+        echo json_encode(["message" => "Inserted"]);
+        exit;
     }
 }
 
-// Always return updated data
+// Fetch inventory
 $result = $conn->query("SELECT * FROM Inventory");
 $inventory = $result->fetch_all(MYSQLI_ASSOC);
 $conn->close();

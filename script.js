@@ -162,6 +162,27 @@ function addRow(tableId) {
 
 function deleteRow(button) {
   const row = button.closest('tr');
+  const id = row.cells[0].innerText;
+
+  fetch('inventory.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `action=delete&id=${id}`
+  })
+  .then(res => res.json())
+  .then(result => {
+    alert('Deleted from database!');
+    row.remove();
+  })
+  .catch(err => {
+    alert('Delete failed');
+    console.error(err);
+  });
+}
+
+
+function deleteRow(button) {
+  const row = button.closest('tr');
   const table = row.closest('table');
   row.remove();
   updateIds(table.id);

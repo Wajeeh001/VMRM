@@ -16,7 +16,8 @@ INSERT INTO Inventory (ID, PartName, VehicleType, Price, Quantity, OrderedNumber
 VALUES 
 (1, 'Brake Pad', 'Car', 3000, 50, 'ORD123', 'Available'),
 (2, 'Headlight', 'Motorcycle', 1500, 30, 'ORD124', 'Ordered'),
-(3, 'Battery', 'Truck', 8000, 0, 'ORD125', 'Out of Stock');
+(3, 'Battery', 'Truck', 8000, 0, 'ORD125', 'Out of Stock'),
+(4, 'Battery', 'Truck', 8000, 0, 'ORD125', 'Out of Stock');
 
 select * from Inventory;
 
