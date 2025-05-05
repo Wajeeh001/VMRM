@@ -210,8 +210,7 @@ button.save-btn:hover {
 
 button.delete-btn {
   min-width: 80%;
-  color: rgb(121, 83, 83);
-  background-color: white;
+  color: white;
   margin-top: 6px;
 }
 
