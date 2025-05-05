@@ -19,7 +19,6 @@ INSERT INTO Inventory (PartName, VehicleType, Price, Quantity, OrderedNumber, St
 
 select * from Inventory;
 
--- InserviceVehicle table with AUTO_INCREMENT
 CREATE TABLE InserviceVehicle (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     VehicleId VARCHAR(10),
@@ -38,7 +37,6 @@ INSERT INTO InserviceVehicle (VehicleId, TypeVehicle, ChangedParts, LabourCharge
 
 select * from InserviceVehicle;
 
--- VehicleStatus table with AUTO_INCREMENT
 CREATE TABLE VehicleStatus (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     VehicleId VARCHAR(10) UNIQUE,
@@ -57,7 +55,7 @@ INSERT INTO VehicleStatus (VehicleId, VehicleType, ChangedParts, TotalCost, Paid
 
 select * from VehicleStatus;
 
--- Customers table with AUTO_INCREMENT
+
 CREATE TABLE Customers (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(30) NOT NULL,
